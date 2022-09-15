@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 import { View, Image, Text, FlatList } from 'react-native';
@@ -13,6 +14,12 @@ import { styles } from './styles';
 
 export function Home() {
   const [games, setGames] = useState<GameCardProp[]>([])
+
+  const navigation = useNavigation()
+
+  function handleOpenGame({ id, title, bannerUrl }: GameCardProp ){
+    navigation.navigate('game', { id, title, bannerUrl })
+  }
 
   useEffect(() => {
     fetch('http://192.168.1.5:3333/games')
@@ -39,6 +46,7 @@ export function Home() {
           renderItem={ ({ item }) => (
             <GameCard
             data={item}
+            onPress={() => handleOpenGame(item)}
           />
           )}
           showsHorizontalScrollIndicator={false}
