@@ -10,6 +10,7 @@ import { THEME } from '../../theme';
 
 import logoImg from '../../assets/logo-nlw-esports.png'
 import { Heading } from '../../components/Heading';
+import { DuoCard } from '../../components/DuoCard';
 
 export function Game() {
   const navigation = useNavigation()
@@ -46,6 +47,8 @@ export function Game() {
           title={game.title}
           subtitle='Conect-se e comece a jogar!'
         />
+
+        <DuoCard />
       </SafeAreaView>
     </Background>
   );
