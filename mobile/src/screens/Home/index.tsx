@@ -1,13 +1,13 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 import { View, Image, Text, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import logoImg from '../../assets/logo-nlw-esports.png'
+import { Background } from '../../components/Background';
 import { GameCard, GameCardProp } from '../../components/GameCard';
 import { Heading } from '../../components/Heading';
 import { THEME } from '../../theme';
-
-import { GAMES } from '../../utils/games'
 
 import { styles } from './styles';
 
@@ -21,29 +21,31 @@ export function Home() {
   }, [])
   
   return (
-    <View style={styles.container}>
-      <Image
-        source={logoImg}
-        style={styles.logo}
-      />
-
-      <Heading
-        title='Encontre seu duo!'
-        subtitle='Selecione o game que deseja jogar...' 
-      />
-
-      <FlatList 
-        data={games}
-        keyExtractor={item => item.id}
-        renderItem={ ({ item }) => (
-          <GameCard
-          data={item}
+    <Background>
+      <SafeAreaView style={styles.container}>
+        <Image
+          source={logoImg}
+          style={styles.logo}
         />
-        )}
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        contentContainerStyle={styles.contentList}
-      />
-    </View>
+
+        <Heading
+          title='Encontre seu duo!'
+          subtitle='Selecione o game que deseja jogar...' 
+        />
+
+        <FlatList 
+          data={games}
+          keyExtractor={item => item.id}
+          renderItem={ ({ item }) => (
+            <GameCard
+            data={item}
+          />
+          )}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          contentContainerStyle={styles.contentList}
+        />
+      </SafeAreaView>
+    </Background>
   );
 }
