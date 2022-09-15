@@ -1,30 +1,49 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+import { THEME } from "../../theme";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   header: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 32,
+    paddingHorizontal: 28,
     marginTop: 28,
     justifyContent: 'space-between',
   },
   logo: {
-    width: 72,
-    height: 40,
+    width: 68,
+    height: 36,
   },
   right: {
-    width: 24,
-    height: 24
+    width: 20,
+    height: 20
   },
   cover: {
-    width: 311,
-    height: 160,
+    width: 308,
+    height: 152,
     borderRadius: 8,
     marginTop: 32,
   },
-});
+  containerList: {
+    width: '100%',
+  },
+  contentList: {
+    paddingLeft: 32,
+    paddingRight: 64,
+    alignItems: 'flex-start'
+  },
+  emptyListText: {
+    color: THEME.COLORS.CAPTION_300,
+    fontSize: THEME.FONT_SIZE.SM,
+    fontFamily: THEME.FONT_FAMILY.REGULAR,
+  },
+  emptyListContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
