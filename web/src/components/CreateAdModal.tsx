@@ -65,7 +65,7 @@ export default function CreateAdModal() {
               <Input
                 id="yearsPlaying"
                 type="number"
-                placeholder="Tudo bem ser ZERO"
+                placeholder="Tudo bem ser ZERO!"
               />
             </div>
             <div className="flex flex-col gap-2">
