@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { FlatList, Image, ScrollView, TouchableOpacity, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,7 +12,7 @@ import { THEME } from '../../theme';
 import logoImg from '../../assets/logo-nlw-esports.png'
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
-import { useEffect, useState } from 'react';
+import { DuoMatch } from '../../components/DuoMatch'
 
 export function Game() {
   const navigation = useNavigation()
@@ -22,7 +23,7 @@ export function Game() {
   const game = route.params as GameParams
 
   useEffect(() => {
-    fetch(`http://192.168.1.5:3333/games/${game.id}/ads`)
+    fetch(`http://192.168.1.12:3333/games/${game.id}/ads`)
       .then(response => response.json())
       .then(data => setDuos(data))
   }, [])
@@ -75,6 +76,12 @@ export function Game() {
             </Text>
           )}
         />
+
+        <DuoMatch 
+          visible
+          discord='TESTE'
+        />
+
       </SafeAreaView>
     </Background>
   );
