@@ -3,7 +3,7 @@
 Clone o repositório e acesse a pasta.
 
 ```bash
-$ git clone https://github.com/devmaicon85/nlwEsports
+$ git clone https://github.com/Jrm1992/NLWIgnite
 
 Para iniciar o projeto:
 
