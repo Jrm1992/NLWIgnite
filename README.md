@@ -1,3 +1,13 @@
+## 🧪 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [Next](https://nextjs.org/)
+- [Prisma](https://www.prisma.io)
+- [Tailwindcss](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org)
+
+
 ## 🚀 Como executar
 
 Clone o repositório e acesse a pasta.

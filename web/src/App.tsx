@@ -40,6 +40,7 @@ function App() {
       .then(response => setGames(response.data))
   }, [])
   
+  if (!games) return <></>;
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoImg} alt="" />
@@ -48,18 +49,19 @@ function App() {
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
       </h1>
 
-    <div ref={sliderRef} className="keen-slider grid  mt-16">
-        {games.map(game => {
-          return (
-            <GameBanner
-              key={game.id}
-              title={game.title}
-              bannerUrl={game.bannerUrl}
-              adsCount={game._count.ads}
-            />
-          )
-        })}
-      </div>
+      <div ref={sliderRef} className="keen-slider">
+          {games.map(game => {
+            return (
+              <div key={game.id} className="keen-slider__slide">
+                <GameBanner
+                  title={game.title}
+                  bannerUrl={game.bannerUrl}
+                  adsCount={game._count.ads}
+                />
+              </div>
+            )
+          })}
+        </div>
 
       <Dialog.Root>
         <CreateAdBanner />
