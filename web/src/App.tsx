@@ -21,10 +21,18 @@ function App() {
   const [games, setGames] = useState<Game[]>([])
 
   const [sliderRef] = useKeenSlider({
-    slides: {
-      perView: 6,
-      spacing: 12,
+    breakpoints: {
+      "(min-width: 400px)": {
+        slides: { perView: 2, spacing: 2 },
+      },
+      "(min-width: 750px)": {
+        slides: { perView: 4, spacing: 6 },
+      },
+      "(min-width: 1000px)": {
+        slides: { perView: 6, spacing: 10 },
+      },
     },
+    slides: { perView: 1 },
   })
 
   useEffect(() => {
