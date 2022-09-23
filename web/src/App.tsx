@@ -26,7 +26,7 @@ function App() {
       spacing: 12,
     },
   })
- 
+
   useEffect(() => {
     axios('http://localhost:3333/games')
       .then(response => setGames(response.data))

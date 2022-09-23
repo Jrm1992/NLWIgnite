@@ -20,7 +20,7 @@ $ npm run dev
 ```
 
 
-A aplicação pode ser acessada em [`localhost:3000`](http://localhost:3000).
+A aplicação pode ser acessada em [`localhost:5173`](http://localhost:5173).
 
 
 ## 💻 Projeto
