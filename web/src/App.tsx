@@ -7,6 +7,7 @@ import CreateAdModal from './components/CreateAdModal'
 import axios from 'axios'
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from "keen-slider/react"
+import { GameAdModal } from './components/GameAdModal'
 
 interface Game {
   id: string
@@ -19,6 +20,7 @@ interface Game {
 
 function App() {
   const [games, setGames] = useState<Game[]>([])
+  const [id, setId] = useState('')
 
   const [sliderRef] = useKeenSlider({
     breakpoints: {
@@ -39,6 +41,11 @@ function App() {
     axios('http://localhost:3333/games')
       .then(response => setGames(response.data))
   }, [])
+
+  function handleClick(id: string){
+    setId(id)
+    console.log("ID:", id)
+  }
   
   if (!games) return <></>;
   return (
@@ -49,19 +56,24 @@ function App() {
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
       </h1>
 
-      <div ref={sliderRef} className="keen-slider">
-          {games.map(game => {
-            return (
-              <div key={game.id} className="keen-slider__slide">
-                <GameBanner
-                  title={game.title}
-                  bannerUrl={game.bannerUrl}
-                  adsCount={game._count.ads}
-                />
-              </div>
-            )
-          })}
-        </div>
+      <Dialog.Root>
+        <div ref={sliderRef} className="keen-slider">
+            {games.map(game => {
+              return (
+                <div key={game.id} className="keen-slider__slide">
+                  <GameBanner
+                    onClick={() => handleClick(game.id)}
+                    id={game.id}
+                    title={game.title}
+                    bannerUrl={game.bannerUrl}
+                    adsCount={game._count.ads}
+                    />
+                </div>
+              )
+            })}
+          </div>
+          <GameAdModal id={id} />
+        </Dialog.Root>
 
       <Dialog.Root>
         <CreateAdBanner />
