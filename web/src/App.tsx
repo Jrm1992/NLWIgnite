@@ -22,7 +22,9 @@ function App() {
   const [games, setGames] = useState<Game[]>([])
   const [id, setId] = useState('')
 
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: true,
+    mode: "free-snap",
     breakpoints: {
       "(min-width: 400px)": {
         slides: { perView: 2, spacing: 2 },
@@ -52,28 +54,28 @@ function App() {
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
       <img src={logoImg} alt="" />
 
-      <h1 className="text-6xl text-white font-black mt-20">
+      <h1 className="text-6xl text-white font-black mt-20 mb-20">
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
       </h1>
 
       <Dialog.Root>
         <div ref={sliderRef} className="keen-slider">
-            {games.map(game => {
-              return (
-                <div key={game.id} className="keen-slider__slide">
-                  <GameBanner
-                    onClick={() => handleClick(game.id)}
-                    id={game.id}
-                    title={game.title}
-                    bannerUrl={game.bannerUrl}
-                    adsCount={game._count.ads}
-                    />
-                </div>
-              )
-            })}
-          </div>
-          <GameAdModal id={id} />
-        </Dialog.Root>
+          {games.map(game => {
+            return (
+              <div key={game.id} className="keen-slider__slide">
+                <GameBanner
+                  onClick={() => handleClick(game.id)}
+                  id={game.id}
+                  title={game.title}
+                  bannerUrl={game.bannerUrl}
+                  adsCount={game._count.ads}
+                  />
+              </div>
+            )
+          })}
+        </div>
+        <GameAdModal id={id} />
+      </Dialog.Root>
 
       <Dialog.Root>
         <CreateAdBanner />
